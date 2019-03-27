@@ -9,7 +9,9 @@ class TradeProductBundle extends AbstractPimcoreBundle
     public function getJsPaths()
     {
         return [
-            '/bundles/tradeproduct/js/pimcore/startup.js'
+            '/bundles/tradeproduct/js/pimcore/startup.js',
+	    '/bundles/tradeproduct/js/pimcore/MassUpload/uploadbutton.js',
+            '/bundles/tradeproduct/js/pimcore/MassUpload/massUploadUtility.js'
         ];
     }
 }

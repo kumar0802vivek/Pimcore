@@ -10,7 +10,8 @@ pimcore.plugin.TradeProductBundle = Class.create(pimcore.plugin.admin, {
     },
 
     pimcoreReady: function (params, broker) {
-        // alert("TradeProductBundle ready!");
+	var uploadbutton = new pimcore.plugin.uploadbutton();
+	uploadbutton.leftNavigation();
     }
 });
 
