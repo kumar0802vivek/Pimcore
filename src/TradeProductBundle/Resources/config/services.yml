@@ -7,7 +7,7 @@ services:
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
-        public: false
+        public: true
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
@@ -22,3 +22,18 @@ services:
 #            - "@service_id"
 #            - "plain_value"
 #            - "%parameter%"
+
+    TradeProductBundle\Service\:
+        resource: '../../Service/*'
+        public: true
+        lazy: true
+    
+    product_hierarchy:
+        alias: TradeProductBundle\Service\GenerateHierarchy
+        arguments: ['@service_container']
+        public: true
+        
+#    product_generation:
+#        alias: TradeProductBundle\Service\CreateUpdateProduct
+#        arguments: ['@service_container']
+#        public: true

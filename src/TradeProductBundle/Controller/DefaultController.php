@@ -56,6 +56,7 @@ class DefaultController extends FrontendController
             $params['import_type'] = '';
 
             if (!empty($className)) {
+		//$skuResponse = $this->container()->get("product_hierarchy")->setHierarchy($params);
 		$status = $commandObj->importProducts($params);
 		if(!$status){
 		    return $this->json(array("success"=>false));
