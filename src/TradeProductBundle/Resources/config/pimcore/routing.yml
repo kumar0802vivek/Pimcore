@@ -1,0 +1,5 @@
+trade_product:
+    resource: "@TradeProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
