@@ -35,20 +35,22 @@ class TSProductImportCommand extends ContainerAwareCommand {
 	if (!file_exists(PIMCORE_PRODUCT_DIRECTORY . $file)) {
 	    $output->write("File not found. Please keep a copy of product sheet in products Directory \n");
 	}
+	$this->importProducts($file);
 
     }
 
-    public function importProducts($params) {
-	if($params['filePath']){
-	    if (!file_exists($params['filePath'])) {
-		return;
-	    }
+    public function importProducts($file) {
+	if($file){
+	    
 	    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
-	    $spreadsheet = $reader->load($params['filePath']);
-	    $worksheet = $spreadsheet->getActiveSheet();
+	    $spreadsheet = $reader->load(PIMCORE_PRODUCT_DIRECTORY . $file);
+	    $worksheet = $spreadsheet->getActiveSheet()->toArray(null,true,true,true);
+	    print_r($worksheet); exit;
 	    foreach ($worksheet->getRowIterator() AS $row) {
+		
 		$cells = $row->getCellIterator();
 		$cells->setIterateOnlyExistingCells(TRUE); // iterates through all cells, including empty ones
+		print_r($cells); exit;
 		$cellData = []; //
 		foreach ($cells as $key => $cell) {
 		    $cellData[] = $cell->getValue();

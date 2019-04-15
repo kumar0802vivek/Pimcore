@@ -39,7 +39,7 @@ class DefaultController extends FrontendController
         foreach ($request->files as $file) {
             $filename = date("Y-m-d-H-i-s")."_".$file->getClientOriginalName();
             if (!empty($filename)) {
-                $file->move($directoryPath, $filename);
+                $file->move($directoryPath, $filename);	
                 chmod($directoryPath.'/'.$filename,0777);
                 unset($file);
             }
